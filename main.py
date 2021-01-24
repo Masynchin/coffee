@@ -15,19 +15,19 @@ class MyWidget(QMainWindow):
         self.update_table()
 
     def update_table(self):
-        self.tableWidget.setRowCount(0)
-        self.tableWidget.setColumnCount(7)
-        self.tableWidget.setHorizontalHeaderLabels([
+        self.table.setRowCount(0)
+        self.table.setColumnCount(7)
+        self.table.setHorizontalHeaderLabels([
             "ID", "Сорт", "Степень обжарки",
             "Молотый/В зёрнах", "Вкус", "Цена", "Объём упаковки"
         ])
 
         for i, data in enumerate(self.get_data()):
-            self.tableWidget.setRowCount(i + 1)
+            self.table.setRowCount(i + 1)
             for j, value in enumerate(data):
-                self.tableWidget.setItem(i, j, QTableWidgetItem(value))
+                self.table.setItem(i, j, QTableWidgetItem(value))
 
-        self.tableWidget.resizeColumnsToContents()
+        self.table.resizeColumnsToContents()
 
     def get_data(self):
         with sqlite3.connect("coffee.sqlite") as conn:
